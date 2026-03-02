@@ -1,0 +1,131 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+    font-family: Google Sans, sans-serif;
+    font-weight: normal;
+    
+}
+body {
+padding:0 ;
+margin: 0;
+background: linear-gradient(to right, #00AAFF, #00FF6C)
+}
+
+.calculator-grid {
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    min-height: 100vh;
+    padding: 20px;
+    min-width: 100px;
+    grid-template-columns: repeat(7, 100px);
+    grid-template-rows: minmax(120px, auto) repeat(7, 100px);
+}
+
+.calculator-grid > button {
+    cursor: pointer;
+    border-radius: 0.2rem;
+    font-size: 1.7rem;
+    border: 1px none;
+    outline: none;
+    background-color: rgba(255, 255, 255, 0.6);
+}
+
+.calculator-grid > button:hover {
+    background-color: rgba(255, 255, 255, 0.85);
+}
+
+/* Style for the clear button */
+.span-two {
+    grid-column: span 2;
+}
+
+.display {
+    grid-column: 1 / -1;
+    border-radius: 0.7rem;
+    background-color: rgba(0, 10, 0, 0.7);
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-around;
+    flex-direction: column;
+    padding: 10px;
+    word-wrap: break-word;
+    word-break: break-all;
+}
+
+.display .previous-operand {
+    color: rgba(255, 255, 255, 0.75);
+    font-size: 1.5rem; 
+}
+
+.display .current-operand {
+    color: #ffffff;
+    font-size: 2.5rem;
+    position: relative;
+}
+
+/* blinking caret effect */
+@keyframes blink {
+    0%, 50% { opacity: 0; }
+    51%, 100% { opacity: 1; }
+}
+
+/*Style for number buttons*/
+.number {  
+    grid-column: span 2;
+}
+
+/* Style for different button types */
+.num {
+    background: rgba(255, 255, 255, 0.1) !important;
+}
+
+.num:hover {
+    background: rgba(255, 255, 255, 0.4) !important;
+}
+
+.op {
+    background: rgba(255, 255, 255, 0.605) !important;
+}
+
+.op:hover {
+    background: rgba(255, 255, 255, 0.85) !important;
+}
+
+.sci {
+    background: rgba(245, 238, 161, 0.57) !important;
+}
+
+.sci:hover {
+    background: rgba(245, 238, 161, 0.42) !important;
+}
+
+.control {
+    background: #ff6b6b !important;
+    color: white;
+}
+
+.control:hover {
+    background: #ff5252 !important;
+}
+
+[data-equals] {
+    background: #4dabf7 !important;
+    color: white;
+    font-weight: bold;
+}
+
+[data-equals]:hover {
+    background: #339af0 !important;
+}
+
+/* 2nd button active state */
+[data-value="2nd"].active {
+    background: rgba(100, 100, 100, 0.9) !important;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+[data-value="2nd"].active:hover {
+    background: rgba(80, 80, 80, 0.9) !important;
+}
+}

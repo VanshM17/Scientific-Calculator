@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scientific Calculator</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+
+</head>
+<body>
+<div class="calculator-grid">
+    <div class="display">
+        <div data-previous-operand class="previous-operand" id="previous-operand"></div>
+        <div data-current-operand class="current-operand" id="current-operand"></div>
+    </div>
+    <!-- Top row buttons -->
+    <button data-value="2nd" class="btn top">2nd</button>
+    <button data-value="pi" class="btn top const">π</button>
+    <button data-value="e" class="btn top const">e</button>
+    <button data-value="(" class="btn top">(</button>
+    <button data-value=")" class="btn top">)</button>
+    <button data-all-clear class="span-two control">AC</button>
+
+      <!-- Second row buttons-->
+     <button data-value="x2" class="btn sci">x²</button>
+    <button data-value="xy" class="btn sci">xʸ</button>
+    <button data-value="10x" class="btn sci">10ˣ</button>
+    <button data-value="log" class="btn sci">log x</button>
+    <button data-value="ln" class="btn sci">ln x</button>
+    <button data-value="sqrt" class="btn sci">√x</button>
+    <button data-value="inv" class="btn sci">1/x</button>
+
+    <!-- Third row buttons -->
+    <button data-value="sin" class="btn sci">sin</button>
+    <button data-value="cos" class="btn sci">cos</button>
+    <button data-value="tan" class="btn sci">tan</button>
+    <button data-value="mod" class="btn sci">mod</button>
+    <button data-value="fact" class="btn sci">n!</button>
+    <button data-operation class="span-two">+</button>
+
+    <!-- Fourth row buttons -->  
+    <button data-number class="number num">7</button>
+    <button data-number class="number num">8</button>
+    <button data-number class="number num">9</button>
+    <button data-operation class="operation op">÷</button>
+
+    <!-- Fifth row buttons -->  
+    <button data-number class="number num">4</button>
+    <button data-number class="number num">5</button>
+    <button data-number class="number num">6</button>
+    <button data-operation class="operation op">×</button>
+
+    
+    <!-- Sixth row buttons -->  
+    <button data-number class="number num">1</button>
+    <button data-number class="number num">2</button>
+    <button data-number class="number num">3</button>
+    <button data-operation class="operation op">-</button>
+
+  
+    <!-- Se row buttons -->  
+    <button data-number class="number num">.</button>
+    <button data-number class="number num">0</button>
+    <button data-equals class="span-two">​=</button>
+    <button data-value="DEL" class="btn top control">⌫</button>
+  
+</body>
+</html>
