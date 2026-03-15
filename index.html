@@ -3,69 +3,94 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Scientific Calculator</title>
+    <meta name="description" content="Scientifreak — A powerful scientific calculator with trig, logarithms, powers, and more.">
+    <title>Scientifreak | Scientific Calculator</title>
+    <link rel="icon" type="image/x-icon" href="calculator.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <link rel="icon" type="image/x-icon" href="/calculator.png">
     <script src="script.js" defer></script>
-
 </head>
 <body>
-<div class="calculator-grid">
-    <div class="display">
-        <div data-previous-operand class="previous-operand" id="previous-operand"></div>
-        <div data-current-operand class="current-operand" id="current-operand"></div>
+    <div class="calculator-wrapper">
+        <div class="calc-header">
+            <span class="calc-brand">Scientifreak</span>
+            <span class="mode-pill" id="angle-mode-pill">DEG</span>
+        </div>
+
+        <div class="calculator-grid">
+            <!-- Display: spans all 4 columns -->
+            <div class="display">
+                <div class="expression-row" id="expression-display"></div>
+                <div class="previous-operand" id="previous-operand"></div>
+                <div class="current-operand" id="current-operand">
+                    <span id="current-value">0</span>
+                    <span class="caret" id="caret">|</span>
+                </div>
+            </div>
+
+            <!-- Sci panel: 7 buttons across, sits above the numeric grid -->
+            <div class="sci-panel">
+                <!-- Top row: 2nd DEG π e ( ) AC -->
+                <div class="sci-row top-row">
+                    <button data-value="2nd"  class="btn top-btn second-btn"  title="Toggle 2nd functions">2nd</button>
+                    <button data-value="deg"  class="btn top-btn mode-btn"    title="Toggle degrees/radians">DEG</button>
+                    <button data-value="pi"   class="btn top-btn const-btn"   title="Pi (π)">π</button>
+                    <button data-value="e"    class="btn top-btn const-btn"   title="Euler's number">e</button>
+                    <button data-value="("    class="btn top-btn bracket-btn" title="Open bracket">(</button>
+                    <button data-value=")"    class="btn top-btn bracket-btn" title="Close bracket">)</button>
+                    <button data-all-clear    class="btn control-btn ac-btn"  title="Clear all (Escape)">AC</button>
+                </div>
+                <!-- Sci row 1: x² xʸ 10ˣ log ln √x 1/x -->
+                <div class="sci-row">
+                    <button data-value="x2"   class="btn sci-btn" title="Square">x²</button>
+                    <button data-value="xy"   class="btn sci-btn" title="x to power y">xʸ</button>
+                    <button data-value="10x"  class="btn sci-btn" title="10 to power x">10ˣ</button>
+                    <button data-value="log"  class="btn sci-btn" title="Log base 10">log</button>
+                    <button data-value="ln"   class="btn sci-btn" title="Natural log">ln</button>
+                    <button data-value="sqrt" class="btn sci-btn" title="Square root">√x</button>
+                    <button data-value="inv"  class="btn sci-btn" title="Inverse (1/x)">1/x</button>
+                </div>
+                <!-- Sci row 2: sin cos tan mod n! -->
+                <div class="sci-row">
+                    <button data-value="sin"  class="btn sci-btn" title="Sine">sin</button>
+                    <button data-value="cos"  class="btn sci-btn" title="Cosine">cos</button>
+                    <button data-value="tan"  class="btn sci-btn" title="Tangent">tan</button>
+                    <button data-value="mod"  class="btn sci-btn" title="Modulo">mod</button>
+                    <button data-value="fact" class="btn sci-btn" title="Factorial">n!</button>
+                </div>
+            </div>
+
+            <!-- ── Numeric grid ── -->
+            <div class="num-grid">
+                <button data-number    class="btn num-btn n7"  title="7">7</button>
+                <button data-number    class="btn num-btn n8"  title="8">8</button>
+                <button data-number    class="btn num-btn n9"  title="9">9</button>
+                <button data-operation class="btn op-btn  ndiv" title="Divide (/)">÷</button>
+                <button data-operation class="btn op-btn  nplus plus-btn" title="Add (+)">+</button>
+
+                <button data-number    class="btn num-btn n4"  title="4">4</button>
+                <button data-number    class="btn num-btn n5"  title="5">5</button>
+                <button data-number    class="btn num-btn n6"  title="6">6</button>
+                <button data-operation class="btn op-btn  nmul" title="Multiply (*)">×</button>
+
+                <button data-number    class="btn num-btn n1"  title="1">1</button>
+                <button data-number    class="btn num-btn n2"  title="2">2</button>
+                <button data-number    class="btn num-btn n3"  title="3">3</button>
+                <button data-operation class="btn op-btn  nsub" title="Subtract (-)">−</button>
+
+                <button data-number class="btn num-btn dot-btn ndot" title=".">.</button>
+                <button data-number class="btn num-btn n0"           title="0">0</button>
+                <button data-equals class="btn equals-btn neq"       title="Equals (Enter)">=</button>
+                <button data-delete  class="btn control-btn del-btn ndel" title="Delete (Backspace)">⌫</button>
+            </div>
+        </div>
+
+        <div class="keyboard-hint">
+            <span>Keyboard supported</span>
+            <span class="hint-keys">0–9 · + − × ÷ · Enter · Esc · ⌫</span>
+        </div>
     </div>
-    <!-- Top row buttons -->
-    <button data-value="2nd" class="btn top">2nd</button>
-    <button data-value="pi" class="btn top const">π</button>
-    <button data-value="e" class="btn top const">e</button>
-    <button data-value="(" class="btn top">(</button>
-    <button data-value=")" class="btn top">)</button>
-    <button data-all-clear class="span-two control">AC</button>
-
-      <!-- Second row buttons-->
-     <button data-value="x2" class="btn sci">x²</button>
-    <button data-value="xy" class="btn sci">xʸ</button>
-    <button data-value="10x" class="btn sci">10ˣ</button>
-    <button data-value="log" class="btn sci">log x</button>
-    <button data-value="ln" class="btn sci">ln x</button>
-    <button data-value="sqrt" class="btn sci">√x</button>
-    <button data-value="inv" class="btn sci">1/x</button>
-
-    <!-- Third row buttons -->
-    <button data-value="sin" class="btn sci">sin</button>
-    <button data-value="cos" class="btn sci">cos</button>
-    <button data-value="tan" class="btn sci">tan</button>
-    <button data-value="mod" class="btn sci">mod</button>
-    <button data-value="fact" class="btn sci">n!</button>
-    <button data-operation class="span-two">+</button>
-
-    <!-- Fourth row buttons -->  
-    <button data-number class="number num">7</button>
-    <button data-number class="number num">8</button>
-    <button data-number class="number num">9</button>
-    <button data-operation class="operation op">÷</button>
-
-    <!-- Fifth row buttons -->  
-    <button data-number class="number num">4</button>
-    <button data-number class="number num">5</button>
-    <button data-number class="number num">6</button>
-    <button data-operation class="operation op">×</button>
-
-    
-    <!-- Sixth row buttons -->  
-    <button data-number class="number num">1</button>
-    <button data-number class="number num">2</button>
-    <button data-number class="number num">3</button>
-    <button data-operation class="operation op">-</button>
-
-  
-    <!-- Se row buttons -->  
-    <button data-number class="number num">.</button>
-    <button data-number class="number num">0</button>
-    <button data-equals class="span-two">​=</button>
-    <button data-value="DEL" class="btn top control">⌫</button>
-  
 </body>
-
 </html>
