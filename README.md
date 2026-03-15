@@ -77,10 +77,10 @@ calculator/
 
 ## 📈 Future Improvements
 
-- Keyboard input support
-- Degree/Radian toggle logic
+- Keyboard input support       (Added ✅)
+- Degree/Radian toggle logic   (Added ✅)
 - History panel
-- Dark mode
+- Dark mode                    (Added ✅)
 - Memory function implementation
 
 ---
